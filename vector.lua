@@ -69,4 +69,24 @@ function Vector.__tostring(v)
 	 return "(" .. v.x .. ", " .. v.y .. ")"
 end
 
+-- calculate the magnitude of the vector
+function Vector:mag()
+  return math.sqrt(self.x * self.x + self.y * self.y)
+end
+
+-- normalize the vector (set its magnitude to 1)
+function Vector:normalize()
+  local magnitude = self:mag()
+  if magnitude > 0 then
+    self.x = self.x / magnitude
+    self.y = self.y / magnitude
+  end
+  return self
+end
+
+-- set the magnitude of the vector to a given value
+function Vector:setMag(m)
+  return self:normalize() * m
+end
+
 return Vector
