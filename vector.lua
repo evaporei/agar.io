@@ -96,4 +96,8 @@ function Vector.dist(a, b)
   return math.sqrt(dx * dx + dy * dy)
 end
 
+function Vector.lerp(a, b, t)
+    return math.lerp(a, b, t)
+end
+
 return Vector

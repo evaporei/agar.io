@@ -6,6 +6,7 @@ local Blob = Base:extend()
 function Blob:constructor(x, y, r)
     self.pos = Vector.new(x, y)
     self.r = r
+    self.vel = Vector.new(0, 0)
 end
 
 function Blob:eats(other)
@@ -22,8 +23,10 @@ end
 function Blob:update(dt)
     if MOUSE_FOCUS then
         local mouseX, mouseY = love.mouse.getPosition()
-        local mouse = Vector.new(mouseX - WWIDTH / 2, mouseY - WHEIGHT / 2)
-        self.pos = self.pos + mouse:setMag(3)
+        local mouse = Vector.new(mouseX - WWIDTH / 2, mouseY - WHEIGHT / 2):setMag(3)
+
+        self.vel = Vector.lerp(self.vel, mouse, 0.1)
+        self.pos = self.pos + self.vel
     end
 end
 
