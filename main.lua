@@ -35,6 +35,11 @@ function love.keypressed(key)
 end
 
 function love.update(dt)
+    for _, blob in pairs(blobs) do
+        if not blob.deleted and player:eats(blob) then
+            blob.deleted = true
+        end
+    end
     player:update(dt)
 end
 
@@ -45,6 +50,8 @@ function love.draw()
     player:draw()
 
     for _, blob in pairs(blobs) do
-        blob:draw()
+        if not blob.deleted then
+            blob:draw()
+        end
     end
 end

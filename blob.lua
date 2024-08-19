@@ -8,6 +8,15 @@ function Blob:constructor(x, y, r)
     self.r = r
 end
 
+function Blob:eats(other)
+    if Vector.dist(self.pos, other.pos) <= self.r + other.r then
+        self.r = self.r + other.r * 0.2
+        return true
+    end
+
+    return false
+end
+
 function Blob:update(dt)
     if MOUSE_FOCUS then
         local mouseX, mouseY = love.mouse.getPosition()

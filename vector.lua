@@ -89,4 +89,11 @@ function Vector:setMag(m)
   return self:normalize() * m
 end
 
+-- calculate the distance between two vectors
+function Vector.dist(a, b)
+  local dx = b.x - a.x
+  local dy = b.y - a.y
+  return math.sqrt(dx * dx + dy * dy)
+end
+
 return Vector
