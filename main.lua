@@ -38,6 +38,9 @@ function love.update(dt)
 end
 
 function love.draw()
+    -- camera: WOW
+    love.graphics.translate(wwidth / 2 - player.pos.x, wheight / 2 - player.pos.y)
+
     player:draw()
 
     for _, blob in pairs(blobs) do
