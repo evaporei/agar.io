@@ -10,6 +10,10 @@ end
 
 function Blob:eats(other)
     if Vector.dist(self.pos, other.pos) <= self.r + other.r then
+        -- -- elegant (but breaks??)
+        -- local sum = math.pi * self.r * self.r +
+        --             math.pi * other.r * other.r
+        -- self.r = math.sqrt(sum)
         self.r = self.r + other.r * 0.2
         return true
     end
