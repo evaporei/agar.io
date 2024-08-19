@@ -1,8 +1,8 @@
 local Blob = require('blob')
 
-local wwidth, wheight = love.graphics.getDimensions()
+WWIDTH, WHEIGHT = love.graphics.getDimensions()
 
-local player = Blob(wwidth / 2, wheight / 2, 64)
+local player = Blob(WWIDTH / 2, WHEIGHT / 2, 64)
 
 local blobs = {}
 
@@ -15,12 +15,12 @@ function love.load()
     math.randomseed(os.time())
 
     for _ = 1, 10 do
-        table.insert(blobs, Blob(math.random(wwidth), math.random(wheight), 16))
+        table.insert(blobs, Blob(math.random(WWIDTH), math.random(WHEIGHT), 16))
     end
 end
 
 function love.resize(w, h)
-    wwidth, wheight = w, h
+    WWIDTH, WHEIGHT = w, h
 end
 
 function love.mousefocus(f)
@@ -39,7 +39,7 @@ end
 
 function love.draw()
     -- camera: WOW
-    love.graphics.translate(wwidth / 2 - player.pos.x, wheight / 2 - player.pos.y)
+    love.graphics.translate(WWIDTH / 2 - player.pos.x, WHEIGHT / 2 - player.pos.y)
 
     player:draw()
 

@@ -10,9 +10,9 @@ end
 
 function Blob:update(dt)
     if MOUSE_FOCUS then
-        local mouse = Vector.new(love.mouse.getPosition())
-        local vel = mouse - self.pos
-        self.pos = self.pos + vel:setMag(3)
+        local mouseX, mouseY = love.mouse.getPosition()
+        local mouse = Vector.new(mouseX - WWIDTH / 2, mouseY - WHEIGHT / 2)
+        self.pos = self.pos + mouse:setMag(3)
     end
 end
 
