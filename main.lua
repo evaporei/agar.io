@@ -14,8 +14,9 @@ function love.load()
 
     math.randomseed(os.time())
 
-    for _ = 1, 10 do
-        table.insert(blobs, Blob(math.random(WWIDTH), math.random(WHEIGHT), 16))
+    for _ = 1, 200 do
+        local x, y = math.random(-WWIDTH * 2, WWIDTH * 2), math.random(-WHEIGHT * 2, WHEIGHT * 2)
+        table.insert(blobs, Blob(x, y, 16))
     end
 end
 
