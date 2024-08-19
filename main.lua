@@ -6,7 +6,13 @@ local player = Blob(WWIDTH / 2, WHEIGHT / 2, 64)
 
 local blobs = {}
 
+local zoom = 1
+
 MOUSE_FOCUS = false
+
+function math.lerp(a, b, t)
+    return (1 - t) * a + t * b
+end
 
 function love.load()
     love.window.setTitle('agar.io')
@@ -45,7 +51,13 @@ end
 
 function love.draw()
     -- camera: WOW
-    love.graphics.translate(WWIDTH / 2 - player.pos.x, WHEIGHT / 2 - player.pos.y)
+    -- love.graphics.translate(WWIDTH / 2 - player.pos.x, WHEIGHT / 2 - player.pos.y)
+    love.graphics.translate(WWIDTH / 2, WHEIGHT / 2)
+
+    zoom = math.lerp(zoom, 64 / player.r, 0.4)
+    love.graphics.scale(zoom)
+
+    love.graphics.translate(-player.pos.x, -player.pos.y)
 
     player:draw()
 
